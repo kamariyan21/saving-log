@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>節約ログ</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>節約ログ</h1>
+    </header>
+
+    <main>
+
+        <section id="input-section">
+            <h2>入力</h2>
+
+            <label>
+                予定額
+                <input type="number" id="plannedAmount" min="0" step="1">
+            </label>
+
+            <label>
+                実支出額
+                <input type="number" id="actualAmount" min="0" step="1">
+            </label>
+
+            <label>
+                対象（任意）
+                <input type="text" id="subject">
+            </label>
+
+            <button id="saveButton">記録</button>
+        </section>
+
+        <section id="view-section">
+
+            <div id="totalSaved">
+                累計: 0円
+            </div>
+
+            <div id="logList">
+            </div>
+        </section>
+
+    </main>
+
+    <script src="app.js"></script>
+
+</body>
+</html>
