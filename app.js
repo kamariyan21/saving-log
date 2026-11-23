@@ -1,4 +1,5 @@
 document.getElementById("saveButton").addEventListener("click", saveLog);
+document.getElementById("exportButton").addEventListener("click", exportJson);
 
 function saveLog() {
     const plannedAmount =
@@ -38,6 +39,7 @@ function saveLog() {
     document.getElementById("actualAmount").value = "";
     document.getElementById("subject").value = "";
 }
+
 function updateTotalSaved() {
 
     const logs =
@@ -88,6 +90,38 @@ function updateLogList() {
 
         logList.appendChild(line);
     }
+}
+
+function exportJson() {
+
+    const logs =
+        JSON.parse(localStorage.getItem("savingLogs")) || [];
+
+    const jsonText =
+        JSON.stringify(logs, null, 2);
+
+    const blob =
+        new Blob(
+            [jsonText],
+            { type: "application/json" }
+        );
+
+    const url =
+        URL.createObjectURL(blob);
+
+    const link =
+        document.createElement("a");
+
+    link.href = url;
+
+    link.download =
+        "saving-log-" +
+        new Date().toISOString().slice(0, 10) +
+        ".json";
+
+    link.click();
+
+    URL.revokeObjectURL(url);
 }
 
 updateTotalSaved();
